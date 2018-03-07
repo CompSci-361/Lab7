@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Scanner;
 
 import server.MainDirectory;
@@ -11,6 +12,7 @@ import transport.DirectoryTransport;
 import transport.Employee;
 
 public class DirectoryEditor {
+	Collection<Employee> employees;
 	private static DirectoryProxy proxy = null;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

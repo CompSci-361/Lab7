@@ -58,6 +58,7 @@ public class DirectoryEditor {
 				adding = processString(line, adding);
 			}
 		}
+		stdin.close();
 	
 	}
 	public static boolean processString(String cmd, boolean adding) {
@@ -67,7 +68,11 @@ public class DirectoryEditor {
 			System.out.println("Select add first before entering data");
 			return adding;
 		}
-		if(tokens.length>2&&adding == true) {
+		if(adding == true) {
+			if(tokens.length<2) {
+				System.out.println("You must hit END or continue inputing data");
+				return adding;
+			}
 			Employee person = new Employee(tokens[0],tokens[1],tokens[2],tokens[3]);
 			addPerson(person);
 			return adding;

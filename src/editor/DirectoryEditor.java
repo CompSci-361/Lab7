@@ -6,17 +6,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import server.MainDictionary;
+import server.MainDirectory;
 import transport.DirectoryTransport;
 import transport.Employee;
 
 public class DirectoryEditor {
+	private static DirectoryProxy proxy = null;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner stdin = new Scanner(System.in);
 		DirectoryTransport transport = new DirectoryTransport();
-		DirectoryProxy proxy = new DirectoryProxy(transport);
-		MainDictionary dictionary = new MainDirectory(transport);
+		proxy = new DirectoryProxy(transport);
+		MainDirectory dictionary = new MainDirectory(transport);
 		//Read in commands and keep sending new Employees to the proxy
 		boolean adding = false;
 		System.out.println("Would you like to read from a file [y,n]: ");
@@ -90,7 +91,7 @@ public class DirectoryEditor {
 		return adding;
 	}
 	public static void addPerson(Employee send) {
-		proxy.addPerson(send);
+		proxy.add(send);
 	}
 	public static void clear() {
 		proxy.clear();

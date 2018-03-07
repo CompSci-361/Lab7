@@ -1,23 +1,27 @@
 package transport;
 
+import java.lang.reflect.Type;
+
 public class DirectoryTransport {
 	private IDirectoryTransportMessageReceiver serverHandler = null;
 	private IDirectoryTransportMessageReceiver clientHandler = null;
 	
-	public void sendToServer(String messageName, String json) {
+	public void sendToServer(String messageName, String json, Type objectType) {
 		if (serverHandler != null) {
 			Message msg = new Message();
 			msg.messageName = messageName;
 			msg.messageValue = json;
-			serverHandler.onMessageReceived(msg);
+			msg.messageValueType = objectType;
+			serverHandler.onHandleReceived(msg);
 		}
 	}
-	public void sendToClient(String messageName, String json) {
+	public void sendToClient(String messageName, String json, Type objectType) {
 		if (clientHandler != null) {
 			Message msg = new Message();
 			msg.messageName = messageName;
 			msg.messageValue = json;
-			clientHandler.onMessageReceived(msg);
+			msg.messageValueType = objectType;
+			clientHandler.onHandleReceived(msg);
 		}
 	}
 	

@@ -1,5 +1,5 @@
 package transport;
 
 public interface IDirectoryTransportMessageReceiver {
-	void onMessageReceived(Message msg);
+	void onHandleReceived(Message msg);
 }

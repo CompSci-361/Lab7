@@ -3,6 +3,7 @@ package server;
 import java.util.ArrayList;
 
 import transport.DirectoryTransport;
+import transport.DirectoryTransportMessageReceiver;
 import transport.Employee;
 import transport.IDictionary;
 import transport.IDirectoryTransportMessageReceiver;
@@ -12,11 +13,10 @@ public class MainDirectory implements IDictionary {
 	
 	ArrayList<Employee> directory;
 
-	private class MessageHandler implements IDirectoryTransportMessageReceiver {
+	private class MessageHandler extends DirectoryTransportMessageReceiver {
 
 		@Override
 		public void onMessageReceived(Message msg) {
-			// TODO Auto-generated method stub
 			switch(msg.messageName.toLowerCase()) {
 			case "print":
 				MainDirectory.this.print();

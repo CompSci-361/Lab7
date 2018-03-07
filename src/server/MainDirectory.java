@@ -1,21 +1,21 @@
-package editor;
+package server;
 
-import server.MainDictionary;
 import transport.DirectoryTransport;
 import transport.Employee;
 import transport.IDictionary;
 import transport.IDirectoryTransportMessageReceiver;
 import transport.Message;
 
-public class DirectoryProxy implements IDictionary {
+public class MainDirectory implements IDictionary {
+
 	private class MessageHandler implements IDirectoryTransportMessageReceiver {
 
 		@Override
 		public void onMessageReceived(Message msg) {
 			// TODO Auto-generated method stub
 			switch(msg.messageName.toLowerCase()) {
-			case "moo":
-				//DirectoryProxy.this.hashCode();
+			case "print":
+				MainDirectory.this.print();
 				break;
 			}
 		}
@@ -23,9 +23,9 @@ public class DirectoryProxy implements IDictionary {
 	}
 	
 	private DirectoryTransport messageTransport;
-	public DirectoryProxy(DirectoryTransport transport) {
+	public MainDirectory(DirectoryTransport transport) {
 		messageTransport = transport;
-		messageTransport.registerHandlerAsClient(new MessageHandler());
+		messageTransport.registerHandlerAsServer(new MessageHandler());
 	}
 	
 	@Override

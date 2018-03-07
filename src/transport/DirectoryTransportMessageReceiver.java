@@ -8,9 +8,11 @@ public abstract class DirectoryTransportMessageReceiver implements IDirectoryTra
 
 	@Override
 	public void onHandleReceived(Message msg) {
-		//silently convert from json
-		Gson g = new Gson();
-		msg.messageValue = g.fromJson((String)msg.messageValue, msg.messageValueType);
+		if (msg.messageValue != null) {
+			//silently convert from json
+			Gson g = new Gson();
+			msg.messageValue = g.fromJson((String)msg.messageValue, msg.messageValueType);
+		}
 	}
 
 	public abstract void onMessageReceived(Message msg);

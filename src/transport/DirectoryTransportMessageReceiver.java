@@ -13,6 +13,8 @@ public abstract class DirectoryTransportMessageReceiver implements IDirectoryTra
 			Gson g = new Gson();
 			msg.messageValue = g.fromJson((String)msg.messageValue, msg.messageValueType);
 		}
+		
+		onMessageReceived(msg);
 	}
 
 	public abstract void onMessageReceived(Message msg);

@@ -68,6 +68,9 @@ public class DirectoryEditor {
 			System.out.println("Select add first before entering data");
 			return adding;
 		}
+		if (cmd.trim().equals("END")) {
+			return false;
+		}
 		if(adding == true) {
 			if(tokens.length<2) {
 				System.out.println("You must hit END or continue inputing data");

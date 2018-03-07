@@ -4,9 +4,9 @@ public class Employee {
 	private String _fname;
 	private String _lname;
 	private String _department;
-	private int _phone;
+	private String _phone;
 	
-	public Employee(String fname, String lname, String department, int phone){
+	public Employee(String fname, String lname, String department, String phone){
 		_fname = fname;
 		_lname = lname;
 		_department = department;
@@ -25,8 +25,24 @@ public class Employee {
 		_department = department;
 	}
 	
-	public void setPhone(int phone){
+	public void setPhone(String phone){
 		_phone = phone;
+	}
+	
+	public String getFname(){
+		return _fname;
+	}
+	
+	public String getLname(){
+		return _lname;
+	}
+	
+	public String getDepartment(){
+		return _department;
+	}
+	
+	public String getPhone(){
+		return _phone;
 	}
 	
 	@Override

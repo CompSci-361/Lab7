@@ -1,5 +1,7 @@
 package editor;
 
+import com.google.gson.Gson;
+
 import transport.DirectoryTransport;
 import transport.Employee;
 import transport.IDictionary;
@@ -13,20 +15,19 @@ public class DirectoryProxy implements IDictionary {
 	
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
-		
+		messageTransport.sendToServer("print", null);
 	}
 
 	@Override
 	public void add(Employee employee) {
-		// TODO Auto-generated method stub
-		
+		Gson g = new Gson();
+		String out = g.toJson(employee);
+		messageTransport.sendToServer("add", out);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		messageTransport.sendToServer("clear", null);
 	}
 
 }
